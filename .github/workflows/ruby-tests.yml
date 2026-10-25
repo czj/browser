@@ -12,16 +12,14 @@ on:
 jobs:
   build:
     name: Tests with Ruby ${{ matrix.ruby }} and ${{ matrix.gemfile }}
-    # ubuntu-latest is moving to 26.04, which has no Ruby 3.2 builds.
-    runs-on: "ubuntu-24.04"
+    runs-on: "ubuntu-latest"
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.2", "3.3", "3.4", "4.0"]
+        ruby: ["3.3", "3.4", "4.0"]
         gemfile:
           - Gemfile
           - gemfiles/8_0.gemfile
-          - gemfiles/7_2.gemfile
 
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
